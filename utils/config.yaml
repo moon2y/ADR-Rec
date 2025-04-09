@@ -1,0 +1,31 @@
+base:
+  max_len: 100
+  hidden_units: 50
+  num_heads: 1
+  num_layers: 2
+  dropout_rate: 0.3
+  device: cuda:0
+
+train:
+  batch_size: 4
+  num_epochs: 100
+  lr: 0.005
+  mask_prob: 0.15
+  alpha: 1.0
+
+infer:
+  batch_size: 128
+  checkpoint_path: checkpoints/B4RDANN_epoch100.pt
+
+recommend:
+  batch_size: 64
+  num_epochs: 100
+  lr: 0.002
+  checkpoint_output: checkpoints/gatedrec.pt
+
+data:
+  source_path: data/food&kitchen/kitchen_all.pkl
+  target_path: data/food&kitchen/food_train.pkl
+  cross_path: data/food&kitchen/cross_f_train.pkl
+  target_spe_emb: embeddings/food_emb_s.pkl
+  target_cross_emb: embeddings/cross_emb_c.pkl
